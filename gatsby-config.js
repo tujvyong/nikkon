@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `（株）ニッコンインターナショナル`,
@@ -15,6 +19,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-scroll-reveal`,
+    "gatsby-plugin-material-ui",
     'gatsby-plugin-eslint',
     `gatsby-plugin-sharp`,
     {
@@ -27,6 +32,13 @@ module.exports = {
         theme_color: `#2196f3`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: process.env.GATSBY_AWS_S3_BUCKET,
+        acl: null
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
