@@ -1,34 +1,33 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { CssBaseline, AppBar, Toolbar, Typography, Slide, useScrollTrigger } from '@material-ui/core';
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+function HideOnScroll(props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
+const Header = ({ siteTitle, children, window, classes }) => (
+  <>
+    <CssBaseline />
+    <HideOnScroll children={children} window={window}>
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h6" component="h1"><Link to="/" className={classes.white}>{siteTitle}</Link></Typography>
+        </Toolbar>
+      </AppBar>
+    </HideOnScroll>
+  </>
 )
 
 Header.propTypes = {
