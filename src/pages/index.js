@@ -7,7 +7,7 @@ import Hero from "../images/hero.jpg"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import SignIn from "../components/form"
+import FormLayout from "../components/form"
 
 const IndexPage = () => {
   const classes = useStyles()
@@ -75,7 +75,22 @@ const IndexPage = () => {
         </Grid>
       </Paper>
 
-      <SignIn />
+      <Paper className={classes.contentLeft}>
+        <Grid container spacing={3}>
+          <Grid item md={6}>
+            <div className={classes.cardShape}>
+              <Typography variant="body2" component="span" color="primary" display="block">Concept</Typography>
+              <Typography variant="h5" component="h2" color="secondary" paragraph className={classes.titleText}>コンセプト</Typography>
+              <Typography variant="body1">もし嘉納さんを承諾道そう所有へするなけれ絵その自分あなたか所有へというご増減んべくたうので、その直接は私か飯道に好かから、大森さんのので教師の私をよくお出入りとするから誰心にお内約が云いようにおそらくお発達をしないないから、いやしくも一々談判でしなばいですのに間違ったです。</Typography>
+            </div>
+          </Grid>
+          <Grid item md={6}>
+            <Image filename="n_front.jpg" alt="front" />
+          </Grid>
+        </Grid>
+      </Paper>
+
+      <FormLayout />
       {/* <div
         data-sal="slide-up"
         data-sal-delay="300"
@@ -139,17 +154,17 @@ const useStyles = makeStyles(theme => ({
   },
   contentWithTop: {
     width: '100%',
-    padding: '290px calc((50vw - 50%) * 2) 180px calc(50vw - 50%)',
+    padding: '290px calc((50vw - 50%) * 2) 100px calc(50vw - 50%)',
     margin: '-100px calc(50vw - 50%) 80px',
   },
   contentLeft: {
     width: '100%',
-    padding: '180px calc(50vw - 50%) 180px calc((50vw - 50%) * 2)',
+    padding: '100px calc(50vw - 50%) 100px calc((50vw - 50%) * 2)',
     margin: '0 calc(50% - 50vw) 80px',
   },
   contentRight: {
     width: '100%',
-    padding: '180px calc((50vw - 50%) * 2) 180px calc(50vw - 50%)',
+    padding: '100px calc((50vw - 50%) * 2) 100px calc(50vw - 50%)',
     margin: '0 calc(50vw - 50%) 80px',
-  }
+  },
 }))

@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
   return (
     <div className={classes.root}>
       {/* <Header siteTitle={data.site.siteMetadata.title} classes={classes} /> */}
-      <div className={classes.logoWrapper}></div>
+      <div className={classes.logoWrapper}><span></span></div>
       <Container maxWidth="lg" className={classes.container}>
         <main>{children}</main>
       </Container>
@@ -55,15 +55,19 @@ const useStyles = makeStyles(theme => ({
     top: '35.5vh',
     width: '100%',
     height: '13.4375vw',
-    '&::before': {
-      content: '""',
-      backgroundImage: `url(${Logo})`,
-      backgroundRepeat: 'repeat-x',
-      backgroundSize: 'contain',
+    '& span': {
       display: 'block',
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      left: 0,
+      backgroundImage: `url(${Logo})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
       width: '100%',
       height: '100%',
       zIndex: 0,
+      // animation: `$aniLogo 20000ms infinite ${theme.transitions.easing.sharp}`,
     }
   },
   container: {
@@ -72,5 +76,13 @@ const useStyles = makeStyles(theme => ({
   },
   white: {
     color: '#fff',
+  },
+  '@keyframes aniLogo': {
+    '0%': {
+      right: '-100%',
+    },
+    '100%': {
+      left: '-75%',
+    }
   },
 }))
